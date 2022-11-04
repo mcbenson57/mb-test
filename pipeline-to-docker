@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: default
+
+services:
+- name: registry
+  image: registry:2
+
+steps:
+- name: build
+  image: plugins/docker
+  settings:
+    insecure: true
+    registry: registry:5000
+    repo: registry:5000/example
+    tags:
+    - drone
